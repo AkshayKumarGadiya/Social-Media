@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { environment } from 'src/assets/environment';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,7 +10,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class AppComponent {
   title = 'mynewApp';
   httpHeader: any;
-  auth_token: any = "OxBONbQaVU6zYG3G0QeN";
+  auth_token: any = environment.auth_token;
   GetPersonDetails: any;
   addperson: any= FormGroup;
   rowsPerPage: number = 10;
@@ -28,7 +29,7 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.http
-    .get('https://zeigsuns.bredex.de/', {headers: this.httpHeader})
+    .get(environment.api, {headers: this.httpHeader})
     .subscribe((res: any) => {
       this.GetPersonDetails = res;
       this.pagination();
@@ -48,7 +49,7 @@ export class AppComponent {
     // console.log(this.addperson.value);
 
     this.http
-    .post('https://zeigsuns.bredex.de/', this.addperson.value, {headers: this.httpHeader})
+    .post(environment.api, this.addperson.value, {headers: this.httpHeader})
     .subscribe((res: any) => {
       this.GetPersonDetails = res;
         console.log(res);
