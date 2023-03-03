@@ -1,18 +1,42 @@
-<h1>BREDEX Web Bewerber Test</h1>
-<h2>Task 1</h2>
-<!-- Displaying user data , I also printed address, phone, website, and company name.  -->
-<table>
+<h2>BREDEX Web Bewerber Test</h2>
+
+<h3>Task 2 - Add Person Details</h3>
+<!-- Here, you can post user, username, and email address and it will automatically added in the above list -->
+<form [formGroup]="addperson" (submit)="createNewPerson()">
+    <!-- Akshay comments- For responsiveness we can apply bootstrap class directly here instead of row -->
+    <div class="row">
+        <label for="name" class="preName"> Person Name: </label>
+        <input type="text" id="name" name="name" formControlName="name" placeholder="Enter Name"/>
+    </div>
+    <div class="row">
+        <label for="username" class="preName">User Name: </label>
+        <input type="text" id="username" name="username"  formControlName="username" placeholder="Enter User Name"/>
+    </div>
+    <div class="row">
+        <label for="email" class="preName">Email Address: </label>
+        <input type="text" id="email" formControlName="email" placeholder="Enter Email"/>
+    </div>
+    <div class="row">
+        <input type="submit" value="ADD PERSON">
+    </div>
+</form>
+
+<h3>Get All Person Details</h3>
+<!-- Displaying user data , I also printed address, phone, website, and company name. But I am not sure it should be updated with person or not..  -->
+<table id="person">
     <thead>
-        <th><b>Name</b></th>
-        <th><b>User Name</b></th>
-        <th><b>Email</b></th>
-        <!-- <td><b>Address</b></td>
+        <tr>
+            <th><b>Name</b></th>
+            <th><b>User Name</b></th>
+            <th><b>Email</b></th>
+            <!-- <td><b>Address</b></td>
         <td><b>phone</b></td>
         <td><b>website</b></td>
         <td><b>Company Name</b></td> -->
+        </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let userdetail of GetPersonDetails">
+        <tr *ngFor="let userdetail of showPersonDetails">
             <td>{{userdetail.name}}</td>
             <td>{{userdetail.username}}</td>
             <td>{{userdetail.email}}</td>
@@ -24,20 +48,26 @@
     </tbody>
 </table>
 
-<h2>Task 2 - POST DATA WITH FORM</h2>
-<!-- Here, you can post user, username, and email address and it will automatically added in the above list -->
-<form [formGroup]="addperson" (submit)="createNewPerson()">
-    <div class="row">
-        Name : <input type="text" formControlName="name" />
-    </div>
-    <div class="row">
-        User Name : <input type="text" formControlName="username" />
-    </div>
-    <div class="row">
-        Email : <input type="text" formControlName="email" />
-    </div>
-    <div class="row">
-        <button type="submit" class="btn btn-secondary"> Add Person </button>
+<!-- Pagination Starts -->
+<br/>
+<div class="pagination">
+    <!-- Number of rows -->
+    <a class="paging-title">Results per page:</a>
+    <a (click)="onChangeRowsPerPage(10)">10</a>
+    <a (click)="onChangeRowsPerPage(15)">15</a>
+    <a (click)="onChangeRowsPerPage(20)">20</a>
 
-    </div>
-</form>
+    <!-- Page per table -->
+    <a> Please Select Any Page Number: &raquo; </a>
+    <a *ngIf="actualPage !== 1" (click)="onPageChange(actualPage-1)">&laquo;</a>
+    <a *ngIf="actualPage-1>0" (click)="onPageChange(actualPage-1)">{{actualPage-1}}</a>
+    <a (click)="onPageChange(actualPage)">{{actualPage}}</a>
+    <a *ngIf="endPaging>=2 && actualPage+1<=endPaging"
+        (click)="onPageChange(actualPage+1)">{{actualPage+1}}</a>
+    <a *ngIf="actualPage-1==0 && endPaging>2"
+        (click)="onPageChange(actualPage+2)">{{actualPage+2}}</a>
+    <a *ngIf="endPaging>=5">---</a>
+    <a *ngIf="endPaging>=4 && actualPage!=endPaging && actualPage+1!=endPaging"
+        (click)="onPageChange(endPaging)">{{endPaging}}</a>
+    <a *ngIf="actualPage+1<=endPaging" (click)="onPageChange(actualPage+1)">&raquo;</a>
+  </div>

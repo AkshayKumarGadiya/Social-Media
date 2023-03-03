@@ -12,11 +12,12 @@ export class AppComponent {
   auth_token: any = "OxBONbQaVU6zYG3G0QeN";
   GetPersonDetails: any;
   addperson: any= FormGroup;
-  postData = {
-    "name": "Akshay Gadhiya",
-    "username": "Janice123",
-    "email": "janice.romero@example.com",
-  };
+  rowsPerPage: number = 10;
+  actualPage: number = 1;
+  showprevnext: boolean = false;
+  endPaging: any;
+  showPersonDetails: any;
+  
 
   constructor(private http: HttpClient, private formBuilder: FormBuilder){
     this.httpHeader = new HttpHeaders({
@@ -30,7 +31,9 @@ export class AppComponent {
     .get('https://zeigsuns.bredex.de/', {headers: this.httpHeader})
     .subscribe((res: any) => {
       this.GetPersonDetails = res;
-        console.log(res);
+      this.pagination();
+        this.updateViewAfterPaginationClicked();
+        // console.log(res);
     });
 
     this.addperson = this.formBuilder.group({
@@ -38,10 +41,11 @@ export class AppComponent {
       username: ['', Validators.required],
       email: ['', Validators.required]
     });
+    this.pagination();
   }
 
   createNewPerson(){
-    console.log(this.addperson.value);
+    // console.log(this.addperson.value);
 
     this.http
     .post('https://zeigsuns.bredex.de/', this.addperson.value, {headers: this.httpHeader})
@@ -50,5 +54,34 @@ export class AppComponent {
         console.log(res);
         this.ngOnInit();
     });
+
+  }
+
+  pagination() {
+    if (this.GetPersonDetails?.length % this.rowsPerPage != 0) {
+      this.endPaging = Math.round(this.GetPersonDetails?.length / this.rowsPerPage)
+    } else {
+      this.endPaging = this.GetPersonDetails.length / this.rowsPerPage
+    }
+  }
+  onPageChange(value: any) {
+    this.showprevnext = false;
+    this.actualPage = value;
+    this.updateViewAfterPaginationClicked();
+  }
+  onChangeRowsPerPage(value: any) {
+    this.rowsPerPage = value;
+    this.pagination();
+    this.actualPage = 1;
+    this.updateViewAfterPaginationClicked();
+  }
+  updateViewAfterPaginationClicked() {
+    var start = (this.actualPage - 1) * this.rowsPerPage;
+    var end = this.actualPage * this.rowsPerPage - 1;
+    this.showPersonDetails = this.GetPersonDetails?.slice(start, end);
+  }
+
+  prevnext(){
+    this.showprevnext = true;
   }
 }
