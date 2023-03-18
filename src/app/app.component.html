@@ -1,10 +1,25 @@
-<h2>BREDEX Web Bewerber Test</h2>
+<app-header></app-header>
+<main>
+<app-post-create></app-post-create>
+<br/>
+<app-post-list></app-post-list>
+</main>
+<!-- <div>
+    <button (click)="toggleContent(-1)">Previous</button>
+    <span>{{ currentContent }}</span>
+    <button (click)="toggleContent(1)">Next</button>
+</div>
+ -->
 
-<h3>Task 2 - Add Person Details</h3>
+
+
+<!-- <h2>BREDEX Web Bewerber Test</h2>
+
+<h3>Task 2 - Add Person Details</h3> -->
 <!-- Here, you can post user, username, and email address and it will automatically added in the above list -->
-<form [formGroup]="addperson" (submit)="createNewPerson()">
+<!-- <form [formGroup]="addperson" (submit)="createNewPerson()"> -->
     <!-- Akshay comments- For responsiveness we can apply bootstrap class directly here instead of row -->
-    <div class="row">
+    <!-- <div class="row">
         <label for="name" class="preName"> Person Name: </label>
         <input type="text" id="name" name="name" formControlName="name" placeholder="Enter Name"/>
     </div>
@@ -19,46 +34,46 @@
     <div class="row">
         <input type="submit" value="ADD PERSON">
     </div>
-</form>
+</form> -->
 
-<h3>Get All Person Details</h3>
+<!-- <h3>Get All Person Details</h3> -->
 <!-- Displaying user data , I also printed address, phone, website, and company name. But I am not sure it should be updated with person or not..  -->
-<table id="person">
+<!-- <table id="person">
     <thead>
         <tr>
             <th><b>Name</b></th>
             <th><b>User Name</b></th>
-            <th><b>Email</b></th>
+            <th><b>Email</b></th> -->
             <!-- <td><b>Address</b></td>
         <td><b>phone</b></td>
         <td><b>website</b></td>
         <td><b>Company Name</b></td> -->
-        </tr>
+        <!-- </tr>
     </thead>
     <tbody>
         <tr *ngFor="let userdetail of showPersonDetails">
             <td>{{userdetail.name}}</td>
             <td>{{userdetail.username}}</td>
-            <td>{{userdetail.email}}</td>
+            <td>{{userdetail.email}}</td> -->
             <!-- <td>{{userdetail.address['street']}}</td>
             <td>{{userdetail.phone}}</td>
             <td>{{userdetail.website}}</td>
             <td>{{userdetail.company['name']}}</td> -->
-        </tr>
+        <!-- </tr>
     </tbody>
-</table>
+</table> -->
 
 <!-- Pagination Starts -->
 <br/>
-<div class="pagination">
+<!-- <div class="pagination"> -->
     <!-- Number of rows -->
-    <a class="paging-title">Results per page:</a>
+    <!-- <a class="paging-title">Results per page:</a>
     <a (click)="onChangeRowsPerPage(10)">10</a>
     <a (click)="onChangeRowsPerPage(15)">15</a>
-    <a (click)="onChangeRowsPerPage(20)">20</a>
+    <a (click)="onChangeRowsPerPage(20)">20</a> -->
 
     <!-- Page per table -->
-    <a> Please Select Any Page Number: &raquo; </a>
+    <!-- <a> Please Select Any Page Number: &raquo; </a>
     <a *ngIf="actualPage !== 1" (click)="onPageChange(actualPage-1)">&laquo;</a>
     <a *ngIf="actualPage-1>0" (click)="onPageChange(actualPage-1)">{{actualPage-1}}</a>
     <a (click)="onPageChange(actualPage)">{{actualPage}}</a>
@@ -70,4 +85,4 @@
     <a *ngIf="endPaging>=4 && actualPage!=endPaging && actualPage+1!=endPaging"
         (click)="onPageChange(endPaging)">{{endPaging}}</a>
     <a *ngIf="actualPage+1<=endPaging" (click)="onPageChange(actualPage+1)">&raquo;</a>
-  </div>
+  </div> -->
