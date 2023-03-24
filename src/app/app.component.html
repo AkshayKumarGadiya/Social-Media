@@ -1,9 +1,22 @@
-<app-header></app-header>
-<main>
+<!-- Toolbar -->
+<mat-toolbar color="primary" class="app-header">
+  <div><a href="https://github.com/users/AkshayKumarGadiya/projects/1" target="_blank" class="positronx">Social Media</a></div>
+  <span class="nav-tool-items">
+    <a mat-button routerLink="login" routerLinkActive="active">Log in</a>
+    <a mat-button mat-raised-button routerLink="register" routerLinkActive="active">Register</a>
+  </span>
+</mat-toolbar>
+<br><br>
+<router-outlet></router-outlet>
+<!-- <app-header></app-header>
+<app-login></app-login> -->
+<!-- <main>
 <app-post-create></app-post-create>
 <br/>
-<app-post-list></app-post-list>
-</main>
+<app-post-list></app-post-list> -->
+<!-- </main> -->
+
+
 <!-- <div>
     <button (click)="toggleContent(-1)">Previous</button>
     <span>{{ currentContent }}</span>
