@@ -50,6 +50,7 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { NewsComponent } from './news/news.component';
 import { UserdashboardComponent } from './userdashboard/userdashboard.component';
+import { ProfileComponent } from './profile/profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +60,8 @@ import { UserdashboardComponent } from './userdashboard/userdashboard.component'
     LoginComponent,
     RegistrationComponent,
     NewsComponent,
-    UserdashboardComponent
+    UserdashboardComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

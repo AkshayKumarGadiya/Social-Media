@@ -4,7 +4,7 @@ import { HttpClient  } from '@angular/common/http';
   providedIn: 'root'
 })
 export class NewsapiService {
-  api_key = 'I will put later on';
+  api_key = '68c22b5e6aa148a3a71b34c6233ddd2a';
   constructor(private http:HttpClient) { }
   initSources(){
      return this.http.get('https://newsapi.org/v2/sources?language=en&apiKey='+this.api_key);

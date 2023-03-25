@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./userdashboard.component.scss']
 })
 export class UserdashboardComponent {
-
+  posts: any[] = [
+    {
+      name: "Akshay Gadhiya",
+      img_url: "any",
+      location: "Ulm",
+      content: "Hello, Akshay Here..."
+    },
+    {
+      name: "Yogesh Vakde",
+      img_url: "any",
+      location: "Ulm",
+      content: "Hello, Yogesh Here..."
+    }
+  ];
 }

@@ -10,5 +10,6 @@ export class PostCreateComponent {
   newPost = 'NO CONTENT';
   onAddPost(){
     this.newPost = this.enteredValue;
+
   }
 }
